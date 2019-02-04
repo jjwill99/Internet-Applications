@@ -1,0 +1,25 @@
+{
+  "name": "node_intro",
+  "version": "0.1.0",
+  "description": "Node.js introduction",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jjwill99/Internet-Applications.git"
+  },
+  "author": "Jacob Williams",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jjwill99/Internet-Applications/issues"
+  },
+  "homepage": "https://github.com/jjwill99/Internet-Applications#readme",
+  "dependencies": {
+    "mocha": "^5.2.0"
+  },
+  "devDependencies": {
+    "mocha": "^5.2.0"
+  }
+}
