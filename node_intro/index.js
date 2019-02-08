@@ -1,6 +1,7 @@
 console.log('index.js executing');
 
 var express = require('express');
+var status = require('http-status');
 var app = express();
 
 app.get('/', function(req, res) {
@@ -8,7 +9,7 @@ app.get('/', function(req, res) {
 });
 
 app.post('/', function(req, res) {
-	res.statusCode(status.METHOD_NOT_ALLOWED);
+	res.sendStatus(status.METHOD_NOT_ALLOWED);
 });
 
 var port = 3000;
