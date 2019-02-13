@@ -30,22 +30,31 @@ module.exports = function(url,callback){
 	} catch(exception){
 	    return callback('Unable to create Message');
 	}
+  if(msg.username){
+    msg.username = sanitizeHTML(msg.username);
+  }
+  if(msg.text){
+    msg.text = sanitizeHTML(msg.text);
+  }
 	msg.save(callback);
     },
     read:function(id,callback){
-	return Message.findById(id, callback);
+      Message.findById(id, callback);
     },
     readUsername:function(username,callback){
-      return Message.find({ username: username },callback);
+      if(typeof username !== 'string'){
+        return callback('Unable to parse username.');
+      }
+      Message.find({ username: username },callback);
     },
     readAll:function(callback){
-      return Message.find({},callback);
+      Message.find({},callback);
     },
     update:function(id,updatedMessage,callback){
-      return Message.findByIdAndUpdate(id,updatedMessage,callback);
+      Message.findByIdAndUpdate(id,updatedMessage,callback);
     },
     delete:function(id,callback){
-      return Message.findByIdAndRemove(id,callback);
+      Message.findByIdAndRemove(id,callback);
     },
     deleteAll:function(callback){
       Message.remove({},callback);
