@@ -6,6 +6,31 @@ const status = require('http-status');
 const apiRoot = 'http://localhost:3000/';
 
 describe('hello API',function(){
+	var server;
+	
+	before(function(done){
+		console.log('index.js executing');
+
+		var express = require('express');
+		var status = require('http-status');
+		var app = express();
+
+		app.get('/', function(req, res) {
+			res.send('Hello, World!');
+		});
+
+		app.post('/', function(req, res) {
+			res.sendStatus(status.METHOD_NOT_ALLOWED);
+		});
+
+		var port = 3000;
+		server = app.listen(port,function(){done()});
+	});
+
+	after(function(){
+		server.close();
+	});
+
 	it('GET request returns text "Hello, World!".',function(done){
 		request.get(apiRoot).end(function(err, res){
 			expect(err).to.not.be.an('error');
