@@ -9,22 +9,14 @@ describe('hello API',function(){
 	var server;
 	
 	before(function(done){
-		console.log('index.js executing');
 
-		var express = require('express');
-		var status = require('http-status');
+		const express = require('express');
 		var app = express();
 
-		app.get('/', function(req, res) {
-			res.send('Hello, World!');
-		});
+		app.use('/',require('../routes/hello.js'));
 
-		app.post('/', function(req, res) {
-			res.sendStatus(status.METHOD_NOT_ALLOWED);
-		});
-
-		var port = 3000;
-		server = app.listen(port,function(){done()});
+		const port = 3000;
+		server = app.listen(port,function() {done();});
 	});
 
 	after(function(){
